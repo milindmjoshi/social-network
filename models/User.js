@@ -7,7 +7,7 @@ function trimName(name){
 // Schema to create User model
 const userSchema = new Schema(
   {
-    usename: { 
+    username: { 
         type: String,
         required: true,
         unique: true,

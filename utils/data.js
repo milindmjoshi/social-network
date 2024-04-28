@@ -55,29 +55,65 @@ const names = [
   ``,
 ];
 
-const descriptionsBodies = [
+const thoughtBodies = [
   'How to disagree with someone',
-  'iPhone review',
-  'how-to video',
-  'video essay on the history of video games',
-  'How to make money on the App Store',
-  'Learn NextJS in five minutes (Not clickbate)',
-  'Movie trailer',
-  'Hello world',
-  'Another possible solution to the algorithm',
-  'Apology video',
-  'Submission for startup pitch',
+  'I am happy today',
+  'So sad today',
+  'Can someone loan me $100',
+  'Lakers will win the NBA championship',
+  'Who likes coding',
+  'Anyone want to see the new Batman movie',
+  'My favorite food is pizza',
+  'Here is a picture from my vacation in Rome',
+  'I am the best QB',
+  'What a beautiful day',
 ];
 
-const possibleResponses = [
+const possibleReactions = [
   'I disagree!',
-  'I tried your algorithm, here were the results',
+  'Showoff',
   'This was awesome',
   'Thank you for the great content',
-  'Please check out my video response',
-  'Like and subscribe to my channel please',
-  'Reply: The side effects of in app purchases on digital marketplaces',
+  'Please give me your phone number',
+  'You are a liar',
+  'You look beautify',
 ];
+
+const ages = [
+  25,
+  24,
+  23,
+  56,
+  34,
+  21,
+  36,
+  41,
+  42,
+  29,
+  30,
+  32,
+  23,
+  39,
+  40
+]
+
+const emails = [
+"erlqawbu4@mail.com",
+"qapiovdh64@gmail.com",
+"qijudckc60@yahoo.com",
+"satqkpda13@hotmail.com",
+"fohcpagl50@mail.com",
+"gmbfrxzp45@hotmail.com",
+"vermickq24@mail.com",
+"cbwxxtse35@hotmail.com",
+"ueerknix15@hotmail.com",
+"nqublpfa74@yahoo.com",
+"uzlxidas18@outlook.com",
+"nqfrcygc40@yahoo.com",
+"vdihjwdj92@hotmail.com",
+"vrmnwfis62@yahoo.com",
+"pyntlowe14@aol.com"
+]
 
 const users = [];
 
@@ -88,29 +124,33 @@ const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 const getRandomName = () =>
   `${getRandomArrItem(names)} ${getRandomArrItem(names)}`;
 
-// Function to generate random videos that we can add to the database. Includes video responses.
-const getRandomVideos = (int) => {
+const getEmail = (index)=> {
+  return emails(index);
+}
+
+con 
+
+// Function to generate random Thoughts that we can add to the database. Includes thought reactions.
+const getRandomThoughts = (int) => {
   let results = [];
   for (let i = 0; i < int; i++) {
     results.push({
-      published: Math.random() < 0.5,
-      description: getRandomArrItem(descriptionsBodies),
-      advertiserFriendly: Math.random() < 0.5,
-      responses: [...getVideoResponses(3)],
+      thoughtText: getRandomArrItem(thoughtBodies),
+      reactions: [...getPossibleReactions(3)],
     });
   }
   return results;
 };
 
-// Create the responses that will be added to each video
-const getVideoResponses = (int) => {
+// Create the reactions that will be added to each thought
+const getPossibleReactions = (int) => {
   if (int === 1) {
-    return getRandomArrItem(possibleResponses);
+    return getRandomArrItem(possibleReactions);
   }
   let results = [];
   for (let i = 0; i < int; i++) {
     results.push({
-      responseBody: getRandomArrItem(possibleResponses),
+      responseBody: getRandomArrItem(possibleReactions),
       username: getRandomName(),
     });
   }
