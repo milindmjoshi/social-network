@@ -125,10 +125,8 @@ const getRandomName = () =>
   `${getRandomArrItem(names)} ${getRandomArrItem(names)}`;
 
 const getEmail = (index)=> {
-  return emails(index);
+  return emails[index];
 }
-
-con 
 
 // Function to generate random Thoughts that we can add to the database. Includes thought reactions.
 const getRandomThoughts = (int) => {
@@ -158,4 +156,4 @@ const getPossibleReactions = (int) => {
 };
 
 // Export the functions for use in seed.js
-module.exports = { getRandomName, getRandomVideos, getRandomVideos };
+module.exports = { getRandomName, getEmail };

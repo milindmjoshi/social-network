@@ -17,13 +17,13 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
-  },
+      match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
+    },
     age: Number,
     thoughts: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'thoughts',
+        ref: 'thought',
       },
     ],
     friends: [
@@ -43,12 +43,12 @@ const userSchema = new Schema(
   }
 );
 
-// Create a virtual property `fullName` that gets and sets the user's full name
+// Create a virtual property `friendsCount` that gets and gets the length of the friends array
 userSchema
   .virtual('friendCount')
   // Getter
   .get(function () {
-    return  friends.length;
+    return  this.friends.length;
   });
    
 
