@@ -1,14 +1,17 @@
-const { Thought, User } = require('../models');
+const { Thought, User, Reaction } = require('../models');
 
 module.exports = {
+  //http://localhost:3001/api/thoughts
   async getThoughts(req, res) {
     try {
       const thoughts = await Thought.find();
       res.json(thoughts);
     } catch (err) {
+      console.log(err.stack);
       res.status(500).json(err);
     }
   },
+  //http://localhost:3001/api/thoughts/662ef0666747c6503186b756
   async getSingleThought(req, res) {
     try {
       const thought = await Thought.findOne({ _id: req.params.thoughtId })
@@ -19,16 +22,24 @@ module.exports = {
 
       res.json(thought);
     } catch (err) {
+      console.log(err.stack);
       res.status(500).json(err);
     }
   },
   // create a new thought
+  //http://localhost:3001/api/thoughts (POST)
+  // {
+  //  "userId": "662ef0666747c6503186b756"
+	// 	"username": "bobcool",
+	//  "thoughtText": "Am I like Bob the Builder?",
+  // }
   async createThought(req, res) {
     try {
       const thought = await Thought.create(req.body);
+      console.log("Thought Created: " + thought);
       const user = await User.findOneAndUpdate(
       //  { _id: req.body.userId },
-        {userid: req.body.userId},
+        { _id: req.body.userId},
         { $addToSet: { thoughts: thought._id } },
         { new: true }
       );
@@ -38,13 +49,16 @@ module.exports = {
           message: 'Thought created, but found no user with that ID',
         });
       }
-
       res.json('Created the Thought 🎉');
+
     } catch (err) {
-      console.log(err);
+      console.log(err.stack);
       res.status(500).json(err);
     }
   },
+
+  //http://localhost:3001/api/thoughts/662ef0666747c6503186b756 (PUT)
+
   async updateThought(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
@@ -63,6 +77,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+  //http://localhost:3001/api/thoughts/662ef0666747c6503186b756 (DELETE)
   async deleteThought(req, res) {
     try {
       const thought = await Thought.findOneAndRemove({ _id: req.params.thoughtId });
@@ -89,11 +104,16 @@ module.exports = {
     }
   },
   // Add a Thought reaction
+  // http://localhost:3001/api/thoughts/662ef0666747c6503186b756/reactions (POST)
   async addThoughtReaction(req, res) {
     try {
+
+      //const reaction = Reaction.create(req.body);
+      //console.log("Reaction: " + reaction);
       const thought = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
-        { $addToSet: { responses: req.body } },
+       // { $addToSet: { reactions: reaction } },
+        { $addToSet: { reactions: req.body } },
         { runValidators: true, new: true }
       );
 
@@ -103,15 +123,17 @@ module.exports = {
 
       res.json(thought);
     } catch (err) {
+      console.log(err.stack);
       res.status(500).json(err);
     }
   },
   // Remove thought reaction
+  // http://localhost:3001/api/thoughts/662ef0666747c6503186b756/reactions/663043824ae612257d7fa6be (DELETE)
   async removeThoughtReaction(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
-        { $pull: { reactions: { reactionId: req.params.reactionId } } },
+        { $pull: { reactions: { _id: req.params.reactionId } } },
         { runValidators: true, new: true }
       )
 
@@ -121,6 +143,7 @@ module.exports = {
 
       res.json(thought);
     } catch (err) {
+      console.log(err.stack);
       res.status(500).json(err);
     }
   },

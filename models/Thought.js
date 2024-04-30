@@ -14,7 +14,7 @@ const thoughtSchema = new Schema(
       type: Date,
       default: Date.now,//TODO: Add getter to format date
     },
-    userName: {
+    username: {
       type: String,
       required: true,
       ref: 'user', // TODO: Will this work?
