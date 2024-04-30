@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 
+// trim name on set
 function trimName(name){
   return name.trim();
 }
@@ -17,6 +18,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
+      // validate email using regex
       match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
     },
     age: Number,
@@ -34,7 +36,6 @@ const userSchema = new Schema(
     ],
   },
   {
-    // Mongoose supports two Schema options to transform Objects after querying MongoDb: toJSON and toObject.
     // Here we are indicating that we want virtuals to be included with our response, overriding the default behavior
     toJSON: {
       virtuals: true,

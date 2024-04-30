@@ -2,6 +2,7 @@ const User = require('../models/User');
 const mongoose = require('mongoose');
 
 module.exports = {
+  // Get all users
   //http://localhost:3001/api/users
   async getUsers(req, res) {
     try {
@@ -17,6 +18,7 @@ module.exports = {
         res.status(500).json(err);
     }
   },
+  // Get a single user
   //http://localhost:3001/api/users/:userId
   async getSingleUser(req, res) {
     try {
@@ -53,6 +55,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+  // Update a user
   //http://localhost:3001/api/users/:userId (PUT)
   // {
 	//   "age": 20
@@ -75,6 +78,8 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+  // Delete a user
+  //http://localhost:3001/api/users/:userId (DELETE)
   async deleteUser(req, res) {
     try {
       const user = await User.findOneAndRemove({ _id: req.params.userId });

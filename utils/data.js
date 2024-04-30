@@ -1,60 +1,23 @@
+// seed names
 const names = [
-  'Aaran',
-  'Aaren',
-  'Aarez',
-  'Aarman',
-  'Aaron',
-  'Aaron-James',
-  'Aarron',
-  'Aaryan',
-  'Aaryn',
-  'Aayan',
-  'Aazaan',
-  'Abaan',
-  'Abbas',
-  'Abdallah',
-  'Abdalroof',
-  'Abdihakim',
-  'Abdirahman',
-  'Abdisalam',
-  'Abdul',
-  'Abdul-Aziz',
-  'Abdulbasir',
-  'Abdulkadir',
-  'Abdulkarem',
-  'Ze',
-  'Zechariah',
-  'Zeek',
-  'Zeeshan',
-  'Zeid',
-  'Zein',
-  'Zen',
-  'Zendel',
-  'Zenith',
-  'Zennon',
-  'Zeph',
-  'Zerah',
-  'Zhen',
-  'Zhi',
-  'Zhong',
-  'Zhuo',
-  'Zi',
-  'Zidane',
-  'Zijie',
-  'Zinedine',
-  'Zion',
-  'Zishan',
-  'Ziya',
-  'Ziyaan',
-  'Zohaib',
-  'Zohair',
-  'Zoubaeir',
-  'Zubair',
-  'Zubayr',
-  'Zuriel',
-  ``,
+  'mjoshi',
+  'mbarrie',
+  'baarez',
+  'darman',
+  'aaronb',
+  'jjames',
+  'cvallejos',
+  'candrews',
+  'tmagaee',
+  'ysanchez',
+  'brittanym',
+  'anthonyo',
+  'abbasm',
+  'abdallaho',
+  'nzechariah',
 ];
 
+// seed thoughts
 const thoughtBodies = [
   'How to disagree with someone',
   'I am happy today',
@@ -67,8 +30,13 @@ const thoughtBodies = [
   'Here is a picture from my vacation in Rome',
   'I am the best QB',
   'What a beautiful day',
+  'You suck',
+  'Man she is hot',
+  'Titanic is best movie ever',
+  'Who wants to hang out tonight'
 ];
 
+// seed reactions
 const possibleReactions = [
   'I disagree!',
   'Showoff',
@@ -76,9 +44,10 @@ const possibleReactions = [
   'Thank you for the great content',
   'Please give me your phone number',
   'You are a liar',
-  'You look beautify',
+  'You look beautiful',
 ];
 
+// seed ages
 const ages = [
   25,
   24,
@@ -97,22 +66,23 @@ const ages = [
   40
 ]
 
+// seed emails
 const emails = [
-"erlqawbu4@mail.com",
-"qapiovdh64@gmail.com",
-"qijudckc60@yahoo.com",
-"satqkpda13@hotmail.com",
-"fohcpagl50@mail.com",
-"gmbfrxzp45@hotmail.com",
-"vermickq24@mail.com",
-"cbwxxtse35@hotmail.com",
-"ueerknix15@hotmail.com",
-"nqublpfa74@yahoo.com",
-"uzlxidas18@outlook.com",
-"nqfrcygc40@yahoo.com",
-"vdihjwdj92@hotmail.com",
-"vrmnwfis62@yahoo.com",
-"pyntlowe14@aol.com"
+"mjoshi@mail.com",
+"mbarrie@gmail.com",
+"baarez@yahoo.com",
+"darman@hotmail.com",
+"aaronb@mail.com",
+"jjames@hotmail.com",
+"cvallejos@mail.com",
+"candrews@hotmail.com",
+"tmagaee@hotmail.com",
+"ysanchez@yahoo.com",
+"brittanym@outlook.com",
+"anthonyo@yahoo.com",
+"abbasm@hotmail.com",
+"abdallaho@yahoo.com",
+"nzechariah@aol.com"
 ]
 
 const users = [];
@@ -121,8 +91,15 @@ const users = [];
 const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 // Gets a random full name
-const getRandomName = () =>
-  `${getRandomArrItem(names)} ${getRandomArrItem(names)}`;
+const getRandomName = () => getRandomArrItem(names);
+
+const getName = (index) =>{
+  return names[index];
+}
+
+const getAge = (index) =>{
+  return ages[index];
+}
 
 const getEmail = (index)=> {
   return emails[index];
@@ -156,4 +133,4 @@ const getPossibleReactions = (int) => {
 };
 
 // Export the functions for use in seed.js
-module.exports = { getRandomName, getEmail };
+module.exports = { getEmail , getName, getAge,  getRandomThoughts};

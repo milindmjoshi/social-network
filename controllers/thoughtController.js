@@ -1,6 +1,7 @@
 const { Thought, User, Reaction } = require('../models');
 
 module.exports = {
+  // Get all thoughts
   //http://localhost:3001/api/thoughts
   async getThoughts(req, res) {
     try {
@@ -11,6 +12,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+  // Get a single thought
   //http://localhost:3001/api/thoughts/662ef0666747c6503186b756
   async getSingleThought(req, res) {
     try {
@@ -57,6 +59,7 @@ module.exports = {
     }
   },
 
+  // Update a thought
   //http://localhost:3001/api/thoughts/662ef0666747c6503186b756 (PUT)
 
   async updateThought(req, res) {
@@ -77,6 +80,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+  // Delete a thought
   //http://localhost:3001/api/thoughts/662ef0666747c6503186b756 (DELETE)
   async deleteThought(req, res) {
     try {

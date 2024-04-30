@@ -31,7 +31,7 @@ const thoughtSchema = new Schema(
   }
 );
 
-// Create a virtual property `responses` that gets the amount of response per video
+// Create a virtual property `reactionCount` that gets the amount of reactions for a thought
 thoughtSchema
   .virtual('reactionCount')
   // Getter
@@ -42,6 +42,7 @@ thoughtSchema
 // Initialize our Thought model
 const Thought = model('thought', thoughtSchema);
 
+// getter for returning a formatted date
 function formatCreatedAt(date){
   //console.log("Format date");
   return date.toLocaleDateString();
