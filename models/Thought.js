@@ -12,18 +12,20 @@ const thoughtSchema = new Schema(
     },
     createdAt: {
       type: Date,
-      default: Date.now,//TODO: Add getter to format date
+      default: Date.now, 
+      get: formatCreatedAt,
     },
     username: {
       type: String,
       required: true,
-      ref: 'user', // TODO: Will this work?
+      ref: 'user', 
     },
     reactions: [Reaction]
   },
   {
     toJSON: {
       virtuals: true,
+      getters: true,
     },
     id: false,
   }
@@ -39,5 +41,10 @@ thoughtSchema
 
 // Initialize our Thought model
 const Thought = model('thought', thoughtSchema);
+
+function formatCreatedAt(date){
+  //console.log("Format date");
+  return date.toLocaleDateString();
+}
 
 module.exports = Thought;

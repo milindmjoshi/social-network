@@ -30,7 +30,7 @@ const reactionSchema = new Schema(
 );
 
 function formatCreatedAt(date){
-  return date.toLocaleString('en-US', { timeZoneName: 'short' });
+  return date.toLocaleDateString();
 }
 
 module.exports = reactionSchema;
