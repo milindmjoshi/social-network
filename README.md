@@ -5,6 +5,7 @@
 ## Table of Contents
 * [Description](#description)
 * [Usage](#usage)
+* [Video](#video)
 * [Installation](#installation)
 * [Tests](#tests)
 * [Contributing](#contributing)
@@ -16,6 +17,9 @@ An API for a social network web application where users can share their thoughts
 
 ## Usage
 The application provides a REST API that allows users to GET, POST, PUT, and DELETE users, thoughts, and reactions to thoughts for  a social network
+
+## Video
+https://drive.google.com/file/d/1wbM1OWql4eEcaLXI8Ny6ClAubCl8R4ny/view
 
 ## Installation
 N/A
